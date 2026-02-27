@@ -1,9 +1,19 @@
-// Import styles of packages that you've installed.
-// All packages except `@mantine/hooks` require styles imports
-import '@mantine/core/styles.css';
+import { Route, Routes } from "react-router-dom";
+import { Outlet } from "react-router-dom";
+import MainLayout from "./layouts/MainLayout";
 
-import { MantineProvider } from '@mantine/core';
-
-export default function App() {
-  return <MantineProvider><h2>Hello World</h2></MantineProvider>;
+function App() {
+    return (
+        <Routes>
+            <Route path="/" element={<MainLayout />}>
+                <Route index element={<p>Homepage</p>} />
+                <Route path="archives" element={<p>Archives Page</p>} />
+                <Route path="notes/new" element={<p>New Note Page</p>} />
+                <Route path="notes/:id" element={<p>Note Detail Page</p>} />
+                <Route path="*" element={<p>Not Found Page</p>} />
+            </Route>
+        </Routes>
+    );
 }
+
+export default App;
