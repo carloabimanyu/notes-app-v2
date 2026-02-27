@@ -24,7 +24,7 @@ function MainLayout() {
                         size="sm"
                     />
 
-                    <div>Logo</div>
+                    <Text fw={700}>Logo</Text>
                 </Group>
                 
             </AppShell.Header>
