@@ -1,6 +1,7 @@
 import { Card, Text, Group, ActionIcon, Image } from "@mantine/core";
 import classes from "./NoteItem.module.css";
 import { IconArchiveFilled, IconTrashFilled } from "@tabler/icons-react";
+import formatDate from "../utils/formatDate";
 
 function NoteItem({ note }) {
     return (
@@ -19,7 +20,7 @@ function NoteItem({ note }) {
             
             <Group justify="space-between" className={classes.footer}>
                 <Group gap="xs">
-                    <Text fz="sm">{note.createdAt}</Text>
+                    <Text fz="sm">{formatDate(note.createdAt)}</Text>
                 </Group>
 
                 <Group gap={8}>
