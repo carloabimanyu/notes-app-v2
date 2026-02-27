@@ -1,10 +1,11 @@
 import { Route, Routes } from "react-router-dom";
 import { Outlet } from "react-router-dom";
+import MainLayout from "./layouts/MainLayout";
 
 function App() {
     return (
         <Routes>
-            <Route path="/" element={<Outlet />}>
+            <Route path="/" element={<MainLayout />}>
                 <Route index element={<p>Homepage</p>} />
                 <Route path="archives" element={<p>Archives Page</p>} />
                 <Route path="notes/new" element={<p>New Note Page</p>} />
