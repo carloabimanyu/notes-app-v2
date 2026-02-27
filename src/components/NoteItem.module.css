@@ -2,6 +2,10 @@
   position: relative;
   background-color: var(--mantine-color-body);
   overflow: visible;
+
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .rating {
@@ -38,5 +42,6 @@
 }
 
 .footer {
-  margin-top: var(--mantine-spacing-md);
+  margin-top: auto;
+  padding-top: var(--mantine-spacing-md);
 }

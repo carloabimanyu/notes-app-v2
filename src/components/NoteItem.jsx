@@ -19,16 +19,16 @@ function NoteItem({ note }) {
             
             <Group justify="space-between" className={classes.footer}>
                 <Group gap="xs">
-                <Text fz="sm">{note.createdAt}</Text>
+                    <Text fz="sm">{note.createdAt}</Text>
                 </Group>
 
                 <Group gap={8}>
-                <ActionIcon className={classes.action} aria-label="Like">
-                    <IconArchiveFilled size={16} color="var(--mantine-color-cyan-6)" />
-                </ActionIcon>
-                <ActionIcon className={classes.action} aria-label="Bookmark">
-                    <IconTrashFilled size={16} color="var(--mantine-color-red-6)" />
-                </ActionIcon>
+                    <ActionIcon className={classes.action} aria-label="Like">
+                        <IconArchiveFilled size={16} color="var(--mantine-color-cyan-6)" />
+                    </ActionIcon>
+                    <ActionIcon className={classes.action} aria-label="Bookmark">
+                        <IconTrashFilled size={16} color="var(--mantine-color-red-6)" />
+                    </ActionIcon>
                 </Group>
             </Group>
         </Card>
