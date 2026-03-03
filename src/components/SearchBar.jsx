@@ -1,7 +1,7 @@
 import { IconSearch } from "@tabler/icons-react";
 import { TextInput, useMantineTheme, Flex } from "@mantine/core";
 
-function SearchBar(props) {
+function SearchBar({ keyword, onKeywordChange }) {
     const theme = useMantineTheme();
 
     return (
@@ -16,7 +16,8 @@ function SearchBar(props) {
                 w="100%"
                 mb="md"
                 maw={400}
-                {...props}
+                value={keyword}
+                onChange={(event) => onKeywordChange(event.target.value)}
             />
         </Flex>
 
