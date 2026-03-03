@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { Affix, ActionIcon, useMantineTheme } from '@mantine/core';
 import { IconPencilPlus } from '@tabler/icons-react';
 
@@ -7,11 +8,12 @@ function AddNoteButton() {
     return (
         <Affix position={{ bottom: 20, right: 20 }}>
             <ActionIcon
+                component={Link}
+                to={"/notes/new"}
                 size="xl"
                 radius="md"
                 variant="filled"
                 color="black"
-                onClick={() => console.log('Clicked')}
             >
                 <IconPencilPlus size={20} />
             </ActionIcon>
