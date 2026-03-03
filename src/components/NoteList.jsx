@@ -1,7 +1,7 @@
 import { SimpleGrid, Text } from "@mantine/core";
 import NoteItem from "./NoteItem";
 
-function NoteList({ notes }) {
+function NoteList({ notes, onDelete, onToggleArchive }) {
     if (!notes.length) {
         return (
             <Text>No notes found</Text>
@@ -18,6 +18,8 @@ function NoteList({ notes }) {
                 <NoteItem
                     key={note.id}
                     note={note}
+                    onDelete={onDelete}
+                    onToggleArchive={onToggleArchive}
                 />
             ))}
         </SimpleGrid>
