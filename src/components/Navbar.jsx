@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import { IconHome, IconArchive, IconLogout, IconUserFilled } from "@tabler/icons-react";
 import { Avatar, Group, Text } from "@mantine/core";
@@ -5,27 +6,24 @@ import classes from "./Navbar.module.css";
 import UserButton from "./UserButton";
 
 const data = [
-    { link: "", label: "Home", icon: IconHome },
-    { link: "", label: "Archives", icon: IconArchive },
+    { link: "/", label: "Home", icon: IconHome },
+    { link: "/archives", label: "Archives", icon: IconArchive },
 ];
 
 function Navbar() {
     const [active, setActive] = useState("Home");
 
     const links = data.map((item) => (
-        <a
-            className={classes.link}
-            data-active={item.label === active || undefined}
-            href={item.link}
+        <NavLink
+            to={item.link}
             key={item.label}
-            onClick={(event) => {
-                event.preventDefault();
-                setActive(item.label);
-            }}
+            className={({ isActive }) =>
+                `${classes.link} ${isActive ? classes.active : ""}`
+            }
         >
             <item.icon className={classes.linkIcon} stroke={1.5} />
             <span>{item.label}</span>
-        </a>
+        </NavLink>
     ));
 
     return (
