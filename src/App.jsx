@@ -1,16 +1,20 @@
 import { Route, Routes } from "react-router-dom";
-import { Outlet } from "react-router-dom";
 import MainLayout from "./layouts/MainLayout";
+import HomePage from "./pages/HomePage";
+import ArchivesPage from "./pages/ArchivesPage";
+import NotFoundPage from "./pages/NotFoundPage";
+import NoteDetailPage from "./pages/NoteDetailPage";
+import AddNotePage from "./pages/AddNotePage";
 
 function App() {
     return (
         <Routes>
             <Route path="/" element={<MainLayout />}>
-                <Route index element={<p>Homepage</p>} />
-                <Route path="archives" element={<p>Archives Page</p>} />
-                <Route path="notes/new" element={<p>New Note Page</p>} />
-                <Route path="notes/:id" element={<p>Note Detail Page</p>} />
-                <Route path="*" element={<p>Not Found Page</p>} />
+                <Route index element={<HomePage />} />
+                <Route path="archives" element={<ArchivesPage />} />
+                <Route path="notes/new" element={<AddNotePage />} />
+                <Route path="notes/:id" element={<NoteDetailPage />} />
+                <Route path="*" element={<NotFoundPage />} />
             </Route>
         </Routes>
     );
