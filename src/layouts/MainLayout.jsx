@@ -4,6 +4,7 @@ import { Outlet } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Logo from "../components/Logo";
 import ThemeToggle from "../components/ThemeToggle";
+import { LanguageSwitcher } from "../components/LanguageSwitcher";
 
 function MainLayout() {
     const [opened, { toggle }] = useDisclosure();
@@ -29,7 +30,10 @@ function MainLayout() {
 
                    <Logo />
 
-                   <ThemeToggle />
+                    <Group>
+                        <LanguageSwitcher />
+                        <ThemeToggle />
+                    </Group>
                 </Group>
 
             </AppShell.Header>

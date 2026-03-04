@@ -1,10 +1,15 @@
 import { SimpleGrid, Text } from "@mantine/core";
 import NoteItem from "./NoteItem";
+import { useLanguage } from "../contexts/LanguageContext";
 
 function NoteList({ notes, onDelete, onToggleArchive }) {
+    const { t } = useLanguage();
+
     if (!notes.length) {
         return (
-            <Text>No notes found</Text>
+            <Text>
+                {t("noteNotFound")}
+            </Text>
         );
     }
 

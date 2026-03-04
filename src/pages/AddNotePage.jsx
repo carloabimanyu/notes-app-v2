@@ -2,12 +2,14 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { TextInput, Textarea, Button, Container, Title, Stack, Paper } from "@mantine/core";
 import { addNote } from "../services/notesServices";
+import { useLanguage } from "../contexts/LanguageContext";
 
 function AddNotePage() {
     const navigate = useNavigate();
     const [title, setTitle] = useState("");
     const [body, setBody] = useState("");
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const { t } = useLanguage();
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -28,21 +30,21 @@ function AddNotePage() {
     return (
         <Container size="sm" py="xl">
             <Paper shadow="sm" radius="md" p="xl" withBorder>
-                <Title order={2} mb="lg">Add New Note</Title>
+                <Title order={2} mb="lg">{t("newNoteHeader")}</Title>
 
                 <form onSubmit={handleSubmit}>
                     <Stack>
                         <TextInput
-                            label="Title"
-                            placeholder="My New Note"
+                            label={t("newNoteTitleLabel")}
+                            placeholder={t("newNoteTitlePlaceholder")}
                             value={title}
                             onChange={(event) => setTitle(event.target.value)}
                             required
                         />
 
                         <Textarea
-                            label="Note body"
-                            placeholder="Today I feel ..."
+                            label={t("newNoteBodyLabel")}
+                            placeholder={t("newNoteBodyPlaceholder")}
                             minRows={20}
                             value={body}
                             onChange={(event) => setBody(event.target.value)}
@@ -51,7 +53,7 @@ function AddNotePage() {
                         />
 
                         <Button type="submit" loading={isSubmitting}>
-                            Save Note
+                            {t("newNoteSubmitButton")}
                         </Button>
                     </Stack>
                 </form>
