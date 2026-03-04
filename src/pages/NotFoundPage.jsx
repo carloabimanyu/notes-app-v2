@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button, Container, Group, Text, Title } from "@mantine/core";
 import classes from "./NotFoundPage.module.css";
+import { useLanguage } from "../contexts/LanguageContext";
 
 function NotFoundPage() {
     const { t } = useLanguage();
