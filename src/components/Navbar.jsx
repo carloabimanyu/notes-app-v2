@@ -4,14 +4,15 @@ import { IconHome, IconArchive, IconLogout, IconUserFilled } from "@tabler/icons
 import { Avatar, Group, Text } from "@mantine/core";
 import classes from "./Navbar.module.css";
 import UserButton from "./UserButton";
-
-const data = [
-    { link: "/", label: "Home", icon: IconHome },
-    { link: "/archives", label: "Archives", icon: IconArchive },
-];
+import { useLanguage } from "../contexts/LanguageContext";
 
 function Navbar() {
-    const [active, setActive] = useState("Home");
+    const { t } = useLanguage();
+
+    const data = [
+        { link: "/", label: t("homeButton"), icon: IconHome },
+        { link: "/archives", label: t("archivesButton"), icon: IconArchive },
+    ];
 
     const links = data.map((item) => (
         <NavLink
@@ -36,7 +37,9 @@ function Navbar() {
             <div className={classes.footer}>
                 <a href="#" className={classes.link} onClick={(event) => event.preventDefault()}>
                     <IconLogout className={classes.linkIcon} stroke={1.5} />
-                    <span>Logout</span>
+                    <span>
+                        {t("logoutButton")}
+                    </span>
                 </a>
             </div>
         </nav>
