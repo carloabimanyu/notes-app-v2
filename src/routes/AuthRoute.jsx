@@ -1,11 +1,12 @@
 import { Navigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
+import { Loading } from "../components/Loading";
 
 function AuthRoute({ children }) {
     const { authedUser, loading } = useAuth();
 
     if (loading) {
-        return <p>Loading...</p>;
+        return <Loading />;
     }
 
     if (authedUser) {
