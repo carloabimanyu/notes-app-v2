@@ -32,8 +32,7 @@ function getStrength(password) {
     return Math.max(100 - (100 / (requirements.length + 1)) * multiplier, 0);
 }
 
-export function PasswordStrength() {
-    const [value, setValue] = useInputState("");
+export function PasswordStrength({ value, onChange }) {
     const strength = getStrength(value);
     const checks = requirements.map((requirement, index) => (
         <PasswordRequirement key={index} label={requirement.label} meets={requirement.re.test(value)} />
@@ -57,7 +56,7 @@ export function PasswordStrength() {
         <div>
             <PasswordInput
                 value={value}
-                onChange={setValue}
+                onChange={onChange}
                 placeholder="Your password"
                 label="Password"
                 required
