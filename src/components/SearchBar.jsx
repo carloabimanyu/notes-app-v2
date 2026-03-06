@@ -7,7 +7,7 @@ function SearchBar({ keyword, onKeywordChange }) {
     const { t } = useLanguage();
 
     return (
-        <Flex justify="center">
+        <Flex justify="left">
             <TextInput
                 radius="xl"
                 size="md"

@@ -13,7 +13,7 @@ function AddNoteButton() {
                 size="xl"
                 radius="md"
                 variant="filled"
-                color="black"
+                color="blue"
             >
                 <IconPencilPlus size={20} />
             </ActionIcon>
