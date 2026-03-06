@@ -34,13 +34,9 @@ export function LoginPage() {
             password,
         });
 
-        console.log(data.accessToken);
-        console.log(error);
-
         setLoading(false);
 
         if (!error) {
-            console.log("Test")
             await loginSuccess(data.accessToken);
             navigate("/");
         }
