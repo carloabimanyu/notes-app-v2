@@ -16,7 +16,7 @@ async function login({ email, password }) {
         return { error: true, data: null };
     }
 
-    return { error: true, data: null };
+    return { error: false, data: responseJson.data };
 }
 
 async function register({ name, email, password }) {
