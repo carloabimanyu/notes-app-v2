@@ -7,6 +7,8 @@ import NoteDetailPage from "./pages/NoteDetailPage";
 import AddNotePage from "./pages/AddNotePage";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import AuthRoute from "./routes/AuthRoute";
+import { LoginPage } from "./pages/LoginPage";
+import { RegisterPage } from "./pages/RegisterPage";
 
 function App() {
     return (
@@ -15,7 +17,7 @@ function App() {
                 path="/login" 
                 element={
                     <AuthRoute>
-                        <p>Login Page</p>
+                        <LoginPage />
                     </AuthRoute>
                 }
             />
@@ -23,7 +25,7 @@ function App() {
                 path="/register" 
                 element={
                     <AuthRoute>
-                        <p>Register Page</p>
+                        <RegisterPage />
                     </AuthRoute>
                 } 
             />

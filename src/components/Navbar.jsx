@@ -5,6 +5,7 @@ import { Avatar, Group, Text } from "@mantine/core";
 import classes from "./Navbar.module.css";
 import UserButton from "./UserButton";
 import { useLanguage } from "../contexts/LanguageContext";
+import { LogoutButton } from "./LogoutButton";
 
 function Navbar() {
     const { t } = useLanguage();
@@ -34,14 +35,7 @@ function Navbar() {
                 {links}
             </div>
 
-            <div className={classes.footer}>
-                <a href="#" className={classes.link} onClick={(event) => event.preventDefault()}>
-                    <IconLogout className={classes.linkIcon} stroke={1.5} />
-                    <span>
-                        {t("logoutButton")}
-                    </span>
-                </a>
-            </div>
+            <LogoutButton />
         </nav>
   );
 }
