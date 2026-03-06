@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { TextInput, Textarea, Button, Container, Title, Stack, Paper } from "@mantine/core";
-import { addNote } from "../services/notesServices";
 import { useLanguage } from "../contexts/LanguageContext";
+import { addNote } from "../services/notes";
 
 function AddNotePage() {
     const navigate = useNavigate();
@@ -11,18 +11,13 @@ function AddNotePage() {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const { t } = useLanguage();
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
 
         if (!title.trim() || !body.trim()) return;
 
         setIsSubmitting(true);
-
-        addNote(
-            title,
-            body,
-        );
-
+        await addNote({ title, body });
         setIsSubmitting(false);
         navigate("/");
     };

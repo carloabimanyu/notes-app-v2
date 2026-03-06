@@ -3,17 +3,19 @@ import NoteList from "../components/NoteList";
 import SearchBar from "../components/SearchBar";
 import { filterNotesByTitle } from "../services/filterNotes";
 import AddNoteButton from "../components/AddNoteButton";
-import { deleteNote, toggleArchiveNote } from "../services/notesServices";
 import { Title } from "@mantine/core";
+import { Loading } from "../components/Loading";
 
 function BaseNotesPage({
-    initialNotes = [],
+    notes = [],
+    loading = false,
     defaultKeyword = "",
     showArchived,
     title,
-    onKeywordChange
+    onKeywordChange,
+    onDelete,
+    onToggleArchive
 }) {
-    const [notes, setNotes] = useState(initialNotes);
     const [keyword, setKeyword] = useState(defaultKeyword);
 
     useEffect(() => {
@@ -22,21 +24,10 @@ function BaseNotesPage({
 
     const handleKeywordChange = (newKeyword) => {
         setKeyword(newKeyword);
+
         if (onKeywordChange) {
             onKeywordChange(newKeyword);
         }
-    };
-
-    const handleDeleteNote = (id) => {
-        deleteNote(id);
-        setNotes((prevNotes) => 
-            prevNotes.filter((note) => note.id !== id)
-        );
-    };
-
-    const handleToggleArchive = (id) => {
-        toggleArchiveNote(id);
-        setNotes([...notes]);
     };
 
     const notesForPage = notes.filter(
@@ -47,9 +38,7 @@ function BaseNotesPage({
 
     return (
         <>
-            <Title
-                m="md"
-            >
+            <Title m="md">
                 {title}
             </Title>
 
@@ -58,11 +47,15 @@ function BaseNotesPage({
                 onKeywordChange={handleKeywordChange}
             />
 
-            <NoteList
-                notes={filteredNotes}
-                onDelete={handleDeleteNote}
-                onToggleArchive={handleToggleArchive}
-            />
+            {loading ? (
+                <Loading />
+            ) : (
+                <NoteList
+                    notes={filteredNotes}
+                    onDelete={onDelete}
+                    onToggleArchive={onToggleArchive}
+                />
+            )}
 
             {!showArchived && <AddNoteButton />}
         </>
